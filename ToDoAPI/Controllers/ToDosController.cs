@@ -34,6 +34,7 @@ namespace ToDoAPI.Controllers
           }
             var toDo = await _context.ToDos.Include("Category").Select(x => new ToDo()
             {
+                TodoId = x.TodoId,
                 CategoryId = x.CategoryId,
                 Name = x.Name,
                 Done = x.Done,
@@ -58,6 +59,7 @@ namespace ToDoAPI.Controllers
           }
             var toDo = await _context.ToDos.Where(x => x.CategoryId == id).Select(x => new ToDo()
             {
+                TodoId = x.TodoId,
                 CategoryId = x.CategoryId,
                 Name = x.Name,
                 Done = x.Done,
@@ -120,6 +122,7 @@ namespace ToDoAPI.Controllers
 
             ToDo newToDo = new ToDo()
             {
+                TodoId = toDo.TodoId,
                 Name = toDo.Name,
                 Done = toDo.Done,
                 CategoryId = toDo.CategoryId,
